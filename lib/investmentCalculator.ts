@@ -1,15 +1,15 @@
 const investmentCalculator = {
 
-  calculateROI(price: number, monthlyRent: number) {
+  calculate(price: number, monthlyRent: number) {
     const annualRent = monthlyRent * 12
     const expenses = price * 0.015
-    const netIncome = annualRent - expenses
-    const roi = (netIncome / price) * 100
+    const net = annualRent - expenses
+    const roi = (net / price) * 100
 
     return {
       annualRent,
-      expenses: Math.round(expenses),
-      netIncome: Math.round(netIncome),
+      expenses,
+      net,
       roi: Number(roi.toFixed(2))
     }
   }
