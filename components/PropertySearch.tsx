@@ -132,7 +132,7 @@ export default function PropertySearch({ onResults }) {
                   <Select
                     value={propertyType}
                     label="Property Type"
-                    onChange={(e) => setPropertyType(e.target.value)}
+                    onChange={(e) => setPropertyType(e.target.value as number)}
                   >
                     <MenuItem value="house">Single Family House</MenuItem>
                     <MenuItem value="townhome">Townhome / Condo</MenuItem>
@@ -147,7 +147,7 @@ export default function PropertySearch({ onResults }) {
                 </Typography>
                 <Slider
                   value={lotSize}
-                  onChange={(e, value) => setLotSize(value)}
+                  onChange={(e, value) => setLotSize(value as number)}
                   min={2000}
                   max={20000}
                   step={500}
@@ -166,7 +166,7 @@ export default function PropertySearch({ onResults }) {
                 </Typography>
                 <Slider
                   value={bedrooms}
-                  onChange={(e, value) => setBedrooms(value)}
+                  onChange={(e, value) => setBedrooms(value as number)}
                   min={1}
                   max={7}
                   step={1}
@@ -181,7 +181,7 @@ export default function PropertySearch({ onResults }) {
                 </Typography>
                 <Slider
                   value={bathrooms}
-                  onChange={(e, value) => setBathrooms(value)}
+                  onChange={(e, value) => setBathrooms(value as number)}
                   min={1}
                   max={5}
                   step={0.5}
@@ -199,7 +199,7 @@ export default function PropertySearch({ onResults }) {
             fullWidth
             label="Property Address"
             value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => setAddress(e.target.value as number)}
             placeholder="123 Main St, Seattle, WA 98101"
             sx={{ mb: 3 }}
             helperText="Enter the complete property address"
