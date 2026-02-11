@@ -12,8 +12,8 @@ import {
 export default function ResultsDisplay({ data }: any) {
 
   return (
-    <div>
-      <h2>ROI: {data.roi.roi}%</h2>
+    <div style={{ marginTop: 40 }}>
+      <h2>Investment ROI: {data.roi.roi}%</h2>
 
       <LineChart width={600} height={300} data={data.growth}>
         <XAxis dataKey="year" />
