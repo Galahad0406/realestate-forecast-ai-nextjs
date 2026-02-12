@@ -2,60 +2,65 @@
 
 import { useState } from 'react'
 import PropertySearch from '@/components/PropertySearch'
-import ResultsDisplay from '@/components/ResultsDisplay'
+import AnalysisReport from '@/components/AnalysisReport'
+import { AnalysisResult } from '@/types'
 
 export default function Home() {
-  const [results, setResults] = useState<any>(null)
+  const [result, setResult] = useState<AnalysisResult | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const handleResults = (data: any) => {
-    setResults(data)
-    setLoading(false)
-    if (data.error) {
-      setError(data.error)
-    } else {
-      setError(null)
+  const handleAnalyze = async (address: string, zipcode: string) => {
+    setLoading(true)
+    setError(null)
+    setResult(null)
+
+    try {
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ address, zipcode })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Analysis failed')
+      }
+
+      setResult(data)
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
     }
   }
 
-  const handleSearch = () => {
-    setLoading(true)
-    setError(null)
-  }
-
   return (
-    <div>
-      <h1>Real Estate Forecast AI</h1>
-      <p style={{ marginBottom: '2rem', fontSize: '1.1rem', color: '#666' }}>
-        Analyze real estate investments with AI-powered insights
-      </p>
-      
-      <PropertySearch 
-        onResults={handleResults} 
-        onSearch={handleSearch}
-      />
-      
+    <div className="container">
+      <div className="header">
+        <h1>Pro Real Estate Analyzer</h1>
+        <p>Professional-Grade Investment Analysis Platform</p>
+      </div>
+
+      <PropertySearch onAnalyze={handleAnalyze} loading={loading} />
+
       {loading && (
-        <div style={{ marginTop: '2rem', fontSize: '1.1rem', color: '#0070f3' }}>
-          Analyzing property data...
+        <div className="loading">
+          <div className="spinner"></div>
+          <p style={{ color: 'white', fontSize: '1.25rem', fontWeight: 600 }}>
+            Analyzing property data from multiple sources...
+          </p>
         </div>
       )}
-      
+
       {error && (
-        <div style={{ 
-          marginTop: '2rem', 
-          padding: '1rem', 
-          backgroundColor: '#fee', 
-          border: '1px solid #fcc',
-          borderRadius: '8px',
-          color: '#c33'
-        }}>
+        <div className="error">
           <strong>Error:</strong> {error}
         </div>
       )}
-      
-      {results && !error && !loading && <ResultsDisplay data={results} />}
+
+      {result && !loading && <AnalysisReport result={result} />}
     </div>
   )
 }
