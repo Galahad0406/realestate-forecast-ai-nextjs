@@ -1,6 +1,6 @@
 {
-  "name": "realestate-forecast-ai",
-  "version": "1.0.0",
+  "name": "pro-realestate-analyzer",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -12,7 +12,9 @@
     "next": "14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "recharts": "^2.10.3"
+    "recharts": "^2.10.3",
+    "axios": "^1.6.5",
+    "date-fns": "^3.0.6"
   },
   "devDependencies": {
     "typescript": "^5.3.3",
