@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function FinancialsTab({ result }: Props) {
-  const { analysis } = result
+  const analysis = result.financials
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
