@@ -1,5 +1,13 @@
 // types/index.ts
 
+export interface AddressSuggestion {
+  address: string
+  city: string
+  state: string
+  zipcode: string
+  fullAddress: string
+}
+
 export interface PropertyData {
   address: string
   city: string
@@ -32,6 +40,7 @@ export interface RentalData {
 }
 
 export interface MarketData {
+  zipcode: string
   medianPrice: number
   pricePerSqft: number
   daysOnMarket: number
@@ -44,6 +53,8 @@ export interface MarketData {
   unemploymentRate: number
   crimeIndex: number
   schoolRating: number
+  totalListings: number
+  medianDaysToSell: number
 }
 
 export interface InvestmentAnalysis {
@@ -54,13 +65,11 @@ export interface InvestmentAnalysis {
   loanTerm: number
   monthlyMortgage: number
   
-  // Income
   monthlyRent: number
   annualRent: number
   otherIncome: number
   grossIncome: number
   
-  // Expenses
   propertyTax: number
   insurance: number
   hoa: number
@@ -70,19 +79,16 @@ export interface InvestmentAnalysis {
   vacancy: number
   totalExpenses: number
   
-  // Cash Flow
-  noi: number // Net Operating Income
+  noi: number
   monthlyCashFlow: number
   annualCashFlow: number
   
-  // Returns
   capRate: number
   cashOnCashReturn: number
-  grm: number // Gross Rent Multiplier
-  dscr: number // Debt Service Coverage Ratio
+  grm: number
+  dscr: number
   roi: number
   
-  // Long-term
   totalInvestment: number
   yearlyProjections: YearlyProjection[]
   irr: number
@@ -127,7 +133,8 @@ export interface ComparableProperty {
   distance: number
 }
 
-export interface AnalysisResult {
+export interface PropertyAnalysisResult {
+  type: 'property'
   property: PropertyData
   rental: RentalData
   market: MarketData
@@ -139,3 +146,24 @@ export interface AnalysisResult {
   insights: string[]
   warnings: string[]
 }
+
+export interface MarketAnalysisResult {
+  type: 'market'
+  zipcode: string
+  market: MarketData
+  averagePropertyPrice: number
+  averageRent: number
+  priceToRentRatio: number
+  marketTrend: 'hot' | 'moderate' | 'slow'
+  investmentPotential: number
+  insights: string[]
+  topProperties: Array<{
+    address: string
+    price: number
+    estimatedRent: number
+    estimatedCashFlow: number
+    capRate: number
+  }>
+}
+
+export type AnalysisResult = PropertyAnalysisResult | MarketAnalysisResult
