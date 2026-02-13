@@ -3,7 +3,6 @@ import axios from 'axios'
 import { PropertyData, RentalData, MarketData, ComparableProperty, AddressSuggestion } from '@/types'
 
 class ApiService {
-  private rentcastKey = process.env.RENTCAST_API_KEY
   private censusKey = process.env.CENSUS_API_KEY
   private rapidApiKey = process.env.RAPIDAPI_KEY
 
