@@ -1,16 +1,14 @@
 'use client'
 
-import { AnalysisResult } from '@/types'
+import { PropertyAnalysisResult } from '@/types'
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts'
 
 interface Props {
-  result: AnalysisResult
+  result: PropertyAnalysisResult
 }
 
 export default function FinancialsTab({ result }: Props) {
-  if (result.type !== 'property') return null
-
-  const analysis = result.analysis
+  const { analysis } = result
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
