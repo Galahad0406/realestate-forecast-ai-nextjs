@@ -1,6 +1,6 @@
 'use client'
 
-import { AnalysisResult } from '@/types'
+import { PropertyAnalysisResult } from '@/types'
 import {
   LineChart,
   Line,
@@ -17,7 +17,7 @@ import {
 } from 'recharts'
 
 interface Props {
-  result: AnalysisResult
+  result: PropertyAnalysisResult
 }
 
 export default function ProjectionsTab({ result }: Props) {
