@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { AnalysisResult } from '@/types'
+import { PropertyAnalysisResult } from '@/types'
 import OverviewTab from './tabs/OverviewTab'
 import FinancialsTab from './tabs/FinancialsTab'
 import ProjectionsTab from './tabs/ProjectionsTab'
@@ -9,10 +9,10 @@ import ScenariosTab from './tabs/ScenariosTab'
 import MarketTab from './tabs/MarketTab'
 
 interface Props {
-  result: AnalysisResult
+  result: PropertyAnalysisResult
 }
 
-export default function AnalysisReport({ result }: Props) {
+export default function PropertyAnalysisReport({ result }: Props) {
   const [activeTab, setActiveTab] = useState('overview')
 
   const tabs = [
