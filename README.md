@@ -225,26 +225,6 @@ All these APIs use the **same RapidAPI key**:
    - `CENSUS_API_KEY` (optional)
 4. Deploy!
 
-## ❓ Troubleshooting
-
-**Q: Address autocomplete not working?**
-A: Check that RAPIDAPI_KEY is set and you've subscribed to Redfin API on RapidAPI.
-
-**Q: "Property not found" error?**
-A: 
-1. Verify RAPIDAPI_KEY is correct
-2. Check you've subscribed to Redfin AND Zillow APIs
-3. Try different address format (include city and state)
-
-**Q: No rental data?**
-A: Subscribe to "Realty Mole Property API" on RapidAPI.
-
-**Q: Build errors?**
-A:
-1. Delete node_modules
-2. Run `npm install`
-3. Check all imports use `@/` prefix
-
 ## 💰 API Costs
 
 ### RapidAPI
@@ -258,13 +238,3 @@ A:
 ## 📝 License
 
 MIT License - Free for personal and commercial use
-
-## 🤝 Support
-
-For issues or questions, open a GitHub issue.
-
----
-
-**Built for real estate investors who demand professional-grade analysis** 🏡
-
-**Powered by RapidAPI - One key, unlimited possibilities** 🚀
