@@ -36,18 +36,18 @@ class ApiService {
     }
   }
 
-  // Get Property Data - RentCast Primary
-  async getPropertyData(address: string): Promise<PropertyData | null> {
-    // Try RentCast first
-    const rentcastData = await this.getPropertyFromRentCast(address)
-    if (rentcastData) return rentcastData
+  // Get Property Data - RapidAPI Only
+async getPropertyData(address: string): Promise<PropertyData | null> {
+  // Try Redfin first
+  const redfin = await this.getPropertyFromRedfin(address)
+  if (redfin) return redfin
 
-    // Fallback to RapidAPI
-    const rapidData = await this.getPropertyFromRapidAPI(address)
-    if (rapidData) return rapidData
+  // Try Zillow as backup
+  const zillow = await this.getPropertyFromZillow(address)
+  if (zillow) return zillow
 
-    return null
-  }
+  return null
+}
 
   private async getPropertyFromRentCast(address: string): Promise<PropertyData | null> {
     if (!this.rentcastKey) return null
