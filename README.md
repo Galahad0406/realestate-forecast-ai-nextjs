@@ -95,11 +95,3 @@ vercel
 ## 📝 License
 
 MIT License - Feel free to use for commercial or personal projects
-
-## 🤝 Contributing
-
-Pull requests welcome! Please test thoroughly before submitting.
-
----
-
-Built with Next.js 15, TypeScript, and ❤️
