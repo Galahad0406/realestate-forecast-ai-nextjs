@@ -4,7 +4,7 @@ import { useState } from 'react'
 import PropertySearch from '@/components/PropertySearch'
 import PropertyAnalysisReport from '@/components/PropertyAnalysisReport'
 import MarketAnalysisReport from '@/components/MarketAnalysisReport'
-import { AnalysisResult } from '@/types'
+import { AnalysisResult, isPropertyAnalysis, isMarketAnalysis } from '@/types'
 
 export default function Home() {
   const [result, setResult] = useState<AnalysisResult | null>(null)
@@ -54,8 +54,8 @@ export default function Home() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Pro Real Estate Analyzer</h1>
-        <p>Professional Investment Analysis Platform</p>
+        <h1>🏡 Pro Real Estate Analyzer</h1>
+        <p>Professional Investment Analysis Platform - Powered by Google Maps & Multiple Data Sources</p>
       </div>
 
       <PropertySearch onAnalyze={handleAnalyze} loading={loading} />
@@ -64,7 +64,9 @@ export default function Home() {
         <div className="loading">
           <div className="spinner"></div>
           <p style={{ color: 'white', fontSize: '1.25rem', fontWeight: 600 }}>
-            Analyzing data from multiple sources...
+            🔍 Geocoding address...
+            <br />
+            📊 Analyzing data from multiple sources...
           </p>
         </div>
       )}
@@ -77,9 +79,10 @@ export default function Home() {
 
       {result && !loading && (
         <>
-          {result.type === 'property' ? (
+          {isPropertyAnalysis(result) && (
             <PropertyAnalysisReport result={result} />
-          ) : (
+          )}
+          {isMarketAnalysis(result) && (
             <MarketAnalysisReport result={result} />
           )}
         </>
