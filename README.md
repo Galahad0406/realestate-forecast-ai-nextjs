@@ -1,238 +1,105 @@
-# 🏘️ Pro Real Estate Analyzer - RapidAPI Edition
+# 🏡 Pro Real Estate Analyzer v2.2
 
-Professional real estate investment analysis platform powered by RapidAPI with intelligent address search and dual analysis modes.
+Professional real estate investment analysis platform with accurate property data and AI-powered insights.
 
-## ✨ Features
+## 🚀 Features
 
-### 🔍 **Intelligent Address Autocomplete**
-- Redfin-style address suggestions as you type
-- Fast, accurate property search
-- Dropdown selection with keyboard navigation
+- **✅ Google Geocoding** - Accurate address verification and standardization
+- **📊 Multi-Source Data** - Redfin, Zillow, Census Bureau
+- **💰 Investment Analysis** - ROI, Cap Rate, Cash Flow, IRR
+- **📈 10-Year Projections** - Property value, equity, returns
+- **🎯 Scenario Analysis** - Conservative, Moderate, Optimistic
+- **🏘️ Market Analysis** - Neighborhood trends and statistics
+- **📍 Comparable Properties** - Real distance calculations
 
-### 📊 **Dual Search Modes**
-1. **Property Search**: Analyze a specific property with detailed metrics
-2. **Market Search**: Get area overview and investment opportunities by zipcode
+## 🔑 API Keys Required
 
-### 🎯 **Powered by RapidAPI**
-All data comes from premium APIs on RapidAPI platform:
-- **Redfin API**: Primary property data and market statistics
-- **Zillow API**: Backup property data for better coverage
-- **Realty Mole Property API**: Rental price estimates
-- **Census API**: Demographics and economic data
+### 1. Google Maps API (Free $200/month credit)
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project
+3. Enable **Geocoding API**
+4. Create credentials → API Key
+5. Add to `.env`: `GOOGLE_MAPS_API_KEY=your_key`
 
-## 🚀 Quick Start
+**Free Tier:** 28,500 requests/month
 
-### 1. Installation
+### 2. RapidAPI (Multiple services)
+1. Sign up at [RapidAPI](https://rapidapi.com/)
+2. Subscribe to these APIs (all have free tiers):
+   - [Redfin Data](https://rapidapi.com/letscrape-6bRBa3QguO5/api/redfin-com-data/) - 100 req/month
+   - [Zillow API](https://rapidapi.com/apimaker/api/zillow-com1/) - 100 req/month  
+   - [Realty Mole](https://rapidapi.com/realtymole/api/realty-mole-property-api/) - 100 req/month
+3. Copy your RapidAPI key
+4. Add to `.env`: `RAPIDAPI_KEY=your_key`
 
+### 3. US Census API (Free unlimited)
+1. Go to [Census API](https://api.census.gov/data/key_signup.html)
+2. Request a free key
+3. Add to `.env`: `CENSUS_API_KEY=your_key`
+
+## 📦 Installation
 ```bash
+# Clone the repository
+git clone <your-repo>
+cd realestate-analyzer
+
+# Install dependencies
 npm install
-```
 
-### 2. Get Your API Keys
+# Create .env.local file
+cp .env.example .env.local
 
-#### RapidAPI (Required)
-1. Go to https://rapidapi.com/
-2. Sign up for a free account
-3. Subscribe to these APIs:
-   - **Redfin API**: Search for "Redfin" → Subscribe (Free tier available)
-   - **Zillow API**: Search for "Zillow" → Subscribe (Free tier available)
-   - **Realty Mole Property API**: Search for "Realty Mole" → Subscribe
-4. Copy your RapidAPI key (same key works for all APIs!)
+# Add your API keys to .env.local
 
-#### Census API (Optional but Recommended)
-1. Go to https://api.census.gov/data/key_signup.html
-2. Request a free API key
-3. Check your email for the key
-
-### 3. Environment Setup
-
-Create `.env.local` file in the root directory:
-
-```env
-RAPIDAPI_KEY=your_rapidapi_key_here
-CENSUS_API_KEY=your_census_key_here
-```
-
-### 4. Run Development Server
-
-```bash
+# Run development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### 5. Deploy to Vercel
-
+## 🔧 Environment Variables
 ```bash
-npm run build
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+RAPIDAPI_KEY=your_rapidapi_key
+CENSUS_API_KEY=your_census_api_key
 ```
 
-Or push to GitHub and deploy via Vercel dashboard.
+## 🎯 How It Works
 
-## 🔑 Vercel Environment Variables Setup
+1. **Address Input** → Google Geocoding validates and standardizes
+2. **Property Search** → Searches Redfin & Zillow with exact location
+3. **Data Collection** → Gathers property details, rental estimates, market data
+4. **Analysis** → Calculates financial metrics and projections
+5. **Report** → Displays comprehensive investment analysis
 
-In Vercel Dashboard:
+## 📊 Accuracy Improvements
 
-1. Go to your project → Settings → Environment Variables
-2. Click "Add Environment Variable"
-3. Add these variables:
+- ✅ Google Geocoding eliminates address errors
+- ✅ Standardized address format for API calls
+- ✅ Lat/Long coordinates for precise distance calculations
+- ✅ Multi-source data validation (Redfin + Zillow)
+- ✅ Real-time market data from Census Bureau
 
-| Key | Value | Environments |
-|-----|-------|--------------|
-| `RAPIDAPI_KEY` | Your RapidAPI key | ✅ Production, Preview, Development |
-| `CENSUS_API_KEY` | Your Census API key | ✅ Production, Preview, Development |
+## 🚀 Deploy to Vercel
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-4. Click "Save" for each variable
-5. Redeploy your project
+# Deploy
+vercel
 
-## 📋 How to Use
-
-### Property Search Mode
-
-1. Click "Search by Property Address"
-2. Start typing an address
-3. Select from autocomplete suggestions
-4. Get detailed investment analysis with:
-   - Cash flow projections
-   - 10-year forecasts
-   - Scenario analysis
-   - Market comparables
-   - Risk assessment
-
-### Market Search Mode
-
-1. Click "Search by Zipcode"
-2. Enter 5-digit zipcode
-3. Get market overview including:
-   - Market trend analysis
-   - Investment potential score
-   - Demographics
-   - Top opportunities in area
-   - Price-to-rent ratios
-
-## 🎨 Features
-
-### Property Analysis
-- ✅ Comprehensive financial metrics (Cap Rate, Cash-on-Cash, IRR, DSCR, GRM)
-- ✅ 10-year projections with equity build-up
-- ✅ 3 scenario analysis (conservative/moderate/optimistic)
-- ✅ Comparable properties analysis
-- ✅ Market data integration
-- ✅ Risk & recommendation scores
-
-### Market Analysis
-- ✅ Area-wide market metrics
-- ✅ Investment potential scoring
-- ✅ Top 5 investment opportunities
-- ✅ Demographics & trends
-- ✅ Price-to-rent analysis
-
-## 🔧 API Configuration
-
-### RapidAPI APIs Used
-
-All these APIs use the **same RapidAPI key**:
-
-#### 1. Redfin API (Primary)
-- **Purpose**: Property details, market stats, address autocomplete
-- **Endpoint**: `redfin-com-data.p.rapidapi.com`
-- **Free Tier**: Yes
-- **Usage**: Property search, market analysis, autocomplete
-
-#### 2. Zillow API (Backup)
-- **Purpose**: Additional property data
-- **Endpoint**: `zillow-com1.p.rapidapi.com`
-- **Free Tier**: Limited
-- **Usage**: Fallback when Redfin data unavailable
-
-#### 3. Realty Mole Property API
-- **Purpose**: Rental price estimates
-- **Endpoint**: `realty-mole-property-api.p.rapidapi.com`
-- **Free Tier**: Yes
-- **Usage**: Monthly rent estimates
-
-#### 4. Census API (Optional)
-- **Purpose**: Demographics data
-- **Endpoint**: `api.census.gov`
-- **Free Tier**: Yes (unlimited)
-- **Usage**: Population, median income, unemployment
-
-## 💡 Investment Metrics Explained
-
-- **Cap Rate**: 4%+ Fair, 6%+ Good, 8%+ Excellent
-- **Cash-on-Cash Return**: 5%+ Fair, 8%+ Good, 12%+ Excellent
-- **DSCR**: >1.0 Required, >1.25 Ideal
-- **IRR**: 8%+ Fair, 12%+ Good, 15%+ Excellent
-- **GRM**: <12 Good, <15 Fair, >15 High
-
-## 🛠️ Tech Stack
-
-- Next.js 14
-- TypeScript
-- Recharts
-- Axios
-- RapidAPI
-- Census API
-
-## 📦 Project Structure
-
+# Add environment variables in Vercel dashboard:
+# Settings → Environment Variables
 ```
-├── app/
-│   ├── api/
-│   │   ├── analyze/      # Property analysis endpoint
-│   │   ├── autocomplete/ # Address suggestions
-│   │   └── market/       # Market analysis endpoint
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── PropertySearch.tsx           # Dual-mode search with autocomplete
-│   ├── PropertyAnalysisReport.tsx   # Property results
-│   ├── MarketAnalysisReport.tsx     # Market results
-│   └── tabs/                        # Analysis tabs
-├── lib/
-│   ├── apiService.ts               # RapidAPI integration
-│   ├── analysisService.ts          # Analysis logic
-│   └── investmentAnalyzer.ts       # Financial calculations
-└── types/
-    └── index.ts                    # TypeScript definitions
-```
-
-## 🔍 Data Flow
-
-### Property Search:
-1. RapidAPI Redfin → Property data (price, beds, baths, sqft)
-2. RapidAPI Zillow → Backup property data (if Redfin fails)
-3. RapidAPI Realty Mole → Rental estimates
-4. Census API → Demographics
-5. RapidAPI Redfin → Comparables
-6. Calculate → Investment analysis
-
-### Zipcode Search:
-1. Census API → Demographics
-2. RapidAPI Redfin → Market stats
-3. RapidAPI Redfin → Property listings
-4. Calculate → Market metrics & opportunities
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Push code to GitHub
-2. Import to Vercel
-3. Add environment variables:
-   - `RAPIDAPI_KEY` (required)
-   - `CENSUS_API_KEY` (optional)
-4. Deploy!
-
-## 💰 API Costs
-
-### RapidAPI
-- **One key** works for all three APIs!
-
-### Census API
-- **Completely Free**: Unlimited requests
 
 ## 📝 License
 
-MIT License - Free for personal and commercial use
+MIT License - Feel free to use for commercial or personal projects
+
+## 🤝 Contributing
+
+Pull requests welcome! Please test thoroughly before submitting.
+
+---
+
+Built with Next.js 15, TypeScript, and ❤️
