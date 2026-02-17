@@ -81,16 +81,34 @@ CENSUS_API_KEY=your_census_api_key
 - ✅ Real-time market data from Census Bureau
 
 ## 🚀 Deploy to Vercel
+
+### Step 1: GitHub에 push
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Add environment variables in Vercel dashboard:
-# Settings → Environment Variables
+git add .
+git commit -m "fix: upgrade Next.js to 15.1.11 (CVE-2025-66478 patch)"
+git push
 ```
+
+### Step 2: Vercel에 연결
+1. [vercel.com](https://vercel.com) → **New Project** → GitHub 저장소 import
+2. **Deploy** 클릭 (환경변수 없으면 빌드는 되지만 API가 작동 안 함)
+
+### Step 3: 환경변수 추가 ⚠️ 필수
+Vercel 대시보드에서 프로젝트 선택 후:
+**Settings → Environment Variables** → 아래 3개 추가:
+
+| Key | Value |
+|-----|-------|
+| `GOOGLE_MAPS_API_KEY` | Google Maps API 키 |
+| `RAPIDAPI_KEY` | RapidAPI 키 |
+| `CENSUS_API_KEY` | Census API 키 |
+
+Production, Preview, Development 환경 모두 체크할 것!
+
+### Step 4: 재배포
+환경변수 추가 후 **Deployments** → **⋯** → **Redeploy**
+
+> ⚠️ 환경변수를 Vercel에 등록하지 않으면 빌드는 성공해도 모든 API 호출이 실패하고 더미 데이터만 표시됩니다.
 
 ## 📝 License
 
