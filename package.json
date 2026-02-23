@@ -1,12 +1,11 @@
 {
-  "name": "pro-realestate-analyzer-v3",
+  "name": "realestate-ai-v3",
   "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "next": "^15.1.11",
@@ -17,10 +16,10 @@
     "papaparse": "^5.4.1"
   },
   "devDependencies": {
+    "typescript": "^5.8.3",
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.4",
-    "@types/leaflet": "^1.9.8",
-    "typescript": "^5.8.3"
+    "@types/leaflet": "^1.9.8"
   }
 }
