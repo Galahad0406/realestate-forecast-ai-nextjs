@@ -108,7 +108,7 @@ Production, Preview, Development 환경 모두 체크할 것!
 ### Step 4: 재배포
 환경변수 추가 후 **Deployments** → **⋯** → **Redeploy**
 
-> ⚠️ 환경변수를 Vercel에 등록하지 않으면 빌드는 성공해도 모든 API 호출이 실패하고 더미 데이터만 표시됩니다.
+⚠️ 환경변수를 Vercel에 등록하지 않으면 빌드는 성공해도 모든 API 호출이 실패하고 더미 데이터만 표시됩니다.
 
 ## 📝 License
 
