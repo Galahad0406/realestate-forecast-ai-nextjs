@@ -1,6 +1,6 @@
 {
-  "name": "pro-realestate-analyzer-v2",
-  "version": "2.2.0",
+  "name": "pro-realestate-analyzer-v3",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,18 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "1.6.7",
-    "next": "15.1.11",
-    "react": "19.1.4",
-    "react-dom": "19.1.4",
-    "recharts": "2.10.3"
+    "next": "^15.1.11",
+    "react": "^19.1.4",
+    "react-dom": "^19.1.4",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1",
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
-    "@types/node": "20.17.30",
-    "@types/react": "19.1.4",
-    "@types/react-dom": "19.1.4",
-    "eslint": "9.26.0",
-    "eslint-config-next": "15.1.11",
-    "typescript": "5.8.3"
+    "@types/node": "^20.17.30",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.4",
+    "@types/leaflet": "^1.9.8",
+    "typescript": "^5.8.3"
   }
 }
