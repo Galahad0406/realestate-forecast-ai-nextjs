@@ -1,23 +1,25 @@
-import { NextResponse } from "next/server"
-import { getZillowData } from "@/lib/zillow"
-import { getHUDData } from "@/lib/hud"
-import { getCensusData } from "@/lib/census"
-import { generateForecast } from "@/lib/forecast"
+import { NextResponse } from "next/server";
+import { getZillowData } from "../../../lib/zillow";
+import { getHUDData } from "../../../lib/hud";
+import { getCensusData } from "../../../lib/census";
+import { forecastMarket } from "../../../lib/forecast";
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url)
-  const region = searchParams.get("region")
-  const zip = searchParams.get("zip")
+export async function GET() {
+  try {
+    const zillow = await getZillowData();
+    const hud = await getHUDData();
+    const census = await getCensusData();
 
-  if (!region || !zip) {
-    return NextResponse.json({ error: "Missing params" }, { status: 400 })
+    const forecast = forecastMarket(zillow, hud, census);
+
+    return NextResponse.json({
+      success: true,
+      data: forecast,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, error: "Market API failed" },
+      { status: 500 }
+    );
   }
-
-  const zillow = getZillowData(region)
-  const hud = await getHUDData(zip)
-  const census = await getCensusData(zip)
-
-  const forecast = generateForecast(zillow, hud, census)
-
-  return NextResponse.json(forecast)
 }
