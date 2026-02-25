@@ -1,12 +1,11 @@
-import fs from "fs"
-import path from "path"
-import Papa from "papaparse"
+export async function getZillowData(region: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/zillow.csv`
+  )
 
-export function getZillowData(region: string) {
-  const filePath = path.join(process.cwd(), "data/zillow.csv")
-  const file = fs.readFileSync(filePath, "utf8")
-
-  const parsed = Papa.parse(file, { header: true })
+  const text = await res.text()
+  const Papa = (await import("papaparse")).default
+  const parsed = Papa.parse(text, { header: true })
 
   return parsed.data.filter((row: any) =>
     row.RegionName?.toLowerCase().includes(region.toLowerCase())
