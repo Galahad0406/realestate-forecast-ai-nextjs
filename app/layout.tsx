@@ -1,6 +1,9 @@
-export const metadata = {
-  title: "Real Estate Forecast AI",
-  description: "Market prediction system",
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "AI Real Estate Forecast",
+  description: "Advanced 5-Year Price Prediction Engine",
 };
 
 export default function RootLayout({
@@ -9,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ko">
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
