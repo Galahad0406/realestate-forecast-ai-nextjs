@@ -1,5 +1,5 @@
-import MarketChart from '@/components/MarketChart';
-import { calculateAIPrediction } from '@/lib/engine';
+import MarketChart from '../components/MarketChart';
+import { calculateAIPrediction } from '../lib/engine';
 
 export default function Dashboard() {
   const data = calculateAIPrediction({
