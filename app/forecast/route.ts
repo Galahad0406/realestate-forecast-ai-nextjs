@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { calculateAIPrediction } from '../../../lib/engine';
+import { calculateAIPrediction } from '../../lib/engine';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
