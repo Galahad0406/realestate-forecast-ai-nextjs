@@ -7,7 +7,7 @@ import { forecastMarket } from "../../../lib/forecast";
 export async function GET() {
   try {
     const zillow = await getZillowData();
-    const hud = await getHUDData();
+    const hud = await getHUDData("10001")
     const census = await getCensusData();
 
     const forecast = forecastMarket(zillow, hud, census);
