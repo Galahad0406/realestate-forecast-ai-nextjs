@@ -1,4 +1,4 @@
-export async function getHUDData(zip: string) {
+export async function getHUDData(zip: string = "10001") {
   const res = await fetch(
     `https://www.huduser.gov/hudapi/public/il/data?zip=${zip}`,
     {
